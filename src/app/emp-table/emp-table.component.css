@@ -1,0 +1,17 @@
+
+td,th{
+  width: fit-content;
+}
+.mat-elevation-z8{
+  width: 100%;
+  padding: 10px;
+}
+
+.emp-table {
+  max-width: 1248px;
+  margin: 0 auto;
+  padding-top: 20px;
+  mat-form-field{
+    width: 100%;
+  }
+}
