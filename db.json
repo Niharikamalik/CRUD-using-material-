@@ -1,0 +1,93 @@
+{
+  "posts": [
+    {
+      "id": "1",
+      "title": "json-server",
+      "author": "typicode"
+    }
+  ],
+  "comments": [
+    {
+      "id": "1",
+      "body": "some comment",
+      "postId": 1
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  },
+  "employees": [
+    {
+      "firstName": "test1",
+      "lastName": "user 1",
+      "email": "malikniharika35@gmail.com",
+      "joiningDate": "2024-02-29T18:30:00.000Z",
+      "gender": "male",
+      "education": "post-graduate",
+      "technology": "machine-learning",
+      "experience": 0,
+      "package": 3.2,
+      "id": "1"
+    },
+    {
+      "firstName": "test2 ",
+      "lastName": "user2 ",
+      "email": "test2",
+      "joiningDate": "2024-03-01T18:30:00.000Z",
+      "gender": "",
+      "education": "diploma",
+      "technology": "data-analysis",
+      "experience": 2,
+      "package": 5.4,
+      "id": "2"
+    },
+    {
+      "firstName": "test3 ",
+      "lastName": "user3",
+      "email": "test3@gmail.com",
+      "joiningDate": "2024-02-29T18:30:00.000Z",
+      "gender": "female",
+      "education": "post-graduate",
+      "technology": "android",
+      "experience": 0,
+      "package": 4.2,
+      "id": "3"
+    },
+    {
+      "firstName": "test4 ",
+      "lastName": "user4 ",
+      "email": "malikniharika35@gmail.com",
+      "joiningDate": "2024-03-05T18:30:00.000Z",
+      "gender": "male",
+      "education": "under-graduate",
+      "technology": "data-analysis",
+      "experience": 1,
+      "package": 10,
+      "id": "4"
+    },
+    {
+      "firstName": "test5 ",
+      "lastName": "user5`",
+      "email": "test5@gmail.com",
+      "joiningDate": "2023-02-24T18:30:00.000Z",
+      "gender": "male",
+      "education": "diploma",
+      "technology": "web-development",
+      "experience": 3,
+      "package": 8,
+      "id": "5"
+    },
+    {
+      "firstName": "test6 ",
+      "lastName": "user6",
+      "email": "test6@gmail.com",
+      "joiningDate": "2023-12-31T18:30:00.000Z",
+      "gender": "male",
+      "education": "other",
+      "technology": "other",
+      "experience": 2,
+      "package": 20,
+      "id": "6"
+    }
+  ]
+}
