@@ -1,0 +1,95 @@
+<div style="width: 100%;">
+  <mat-toolbar color="primary">
+    <span>Crud Application</span>
+    <button (click)="openForm()" mat-raised-button matTooltip="add new employee detials" matTooltipPosition="left"> ADD EMPLOYEE </button>
+  </mat-toolbar>
+</div>
+<div class="emp-table">
+  <mat-form-field>
+    <mat-label>Filter</mat-label>
+    <input #input (keyup)="applyFilter($event)" matInput placeholder="Ex. Mia">
+  </mat-form-field>
+  <div class="table-container">
+    <table [dataSource]="dataSource" mat-table class="mat-elevation-z8" matSort>
+      <!-- S.No. Column -->
+      <ng-container matColumnDef="S.No.">
+        <th *matHeaderCellDef mat-header-cell mat-sort-header> S.No. </th>
+        <td *matCellDef="let element let i = index;" mat-cell> {{i+1}} </td>
+      </ng-container>
+
+      <!-- firstName Column -->
+      <ng-container matColumnDef="firstName">
+        <th *matHeaderCellDef mat-header-cell mat-sort-header> First Name </th>
+        <td *matCellDef="let element" mat-cell> {{element.firstName.charAt(0).toUpperCase()+element.firstName.slice(1)}}
+        </td>
+      </ng-container>
+
+      <!-- lastName Column -->
+      <ng-container matColumnDef="lastName">
+        <th *matHeaderCellDef mat-header-cell> LastName </th>
+        <td *matCellDef="let element" mat-cell> {{element.lastName.charAt(0).toUpperCase()+element.lastName.slice(1)}}
+        </td>
+      </ng-container>
+
+      <!-- email column -->
+      <ng-container matColumnDef="email">
+        <th *matHeaderCellDef mat-header-cell> Email </th>
+        <td *matCellDef="let element" mat-cell> {{element.email}} </td>
+      </ng-container>
+
+      <!-- gender column -->
+      <ng-container matColumnDef="gender">
+        <th *matHeaderCellDef mat-header-cell> Gender </th>
+        <td *matCellDef="let element" mat-cell> {{ element.gender== 'male'? 'M' : element.gender== 'female'?'F':''}}
+        </td>
+      </ng-container>
+
+      <!-- education column -->
+      <ng-container matColumnDef="education">
+        <th *matHeaderCellDef mat-header-cell> education </th>
+        <td *matCellDef="let element" mat-cell> {{element.education}} </td>
+      </ng-container>
+
+      <!-- Joining Date column -->
+      <ng-container matColumnDef="joiningDate">
+        <th *matHeaderCellDef mat-header-cell mat-sort-header> joiningDate </th>
+        <td *matCellDef="let element" mat-cell> {{element.joiningDate | date}} </td>
+      </ng-container>
+
+      <!-- Experience column -->
+      <ng-container matColumnDef="experience">
+        <th *matHeaderCellDef mat-header-cell mat-sort-header> Experiemce </th>
+        <td *matCellDef="let element" mat-cell> {{element.experience}} </td>
+      </ng-container>
+
+      <!-- Technology column -->
+      <ng-container matColumnDef="technology">
+        <th *matHeaderCellDef mat-header-cell> technology </th>
+        <td *matCellDef="let element" mat-cell> {{element.technology}} </td>
+      </ng-container>
+
+      <!-- Package column -->
+      <ng-container matColumnDef="package">
+        <th *matHeaderCellDef mat-header-cell mat-sort-header> Package </th>
+        <td *matCellDef="let element" mat-cell> {{element.package? (element.package | currency :'INR')+ 'L':''}} </td>
+      </ng-container>
+
+      <!-- Action column -->
+      <ng-container matColumnDef="action">
+        <th *matHeaderCellDef mat-header-cell mat-sort-header> Action </th>
+        <td *matCellDef="let element" mat-cell>
+          <button (click)="openEditForm(element)" mat-icon-button color="primary"> <mat-icon
+              class="mat-18">edit</mat-icon> </button>
+          <button (click)="deleteEmploye(element.id)" mat-icon-button color="warn"> <mat-icon
+              class="mat-18">delete</mat-icon> </button>
+        </td>
+      </ng-container>
+
+      <tbody>
+        <tr *matHeaderRowDef="displayedColumns" mat-header-row></tr>
+        <tr *matRowDef="let row; columns: displayedColumns;" mat-row></tr>
+      </tbody>
+    </table>
+    <mat-paginator [pageSizeOptions]="[5]" aria-label="Select page of users"></mat-paginator>
+  </div>
+</div>

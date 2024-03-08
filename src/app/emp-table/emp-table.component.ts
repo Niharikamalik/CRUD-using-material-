@@ -6,6 +6,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { EmployeeService } from 'src/app/services/employee.service';
 import { EmpAddEditComponent } from './emp-add-edit/emp-add-edit.component';
 import { CoreService } from '../core/core.service';
+import { EmpDetails } from '../interface/empdetails';
 
 @Component({
   selector: 'app-emp-table',
@@ -14,10 +15,10 @@ import { CoreService } from '../core/core.service';
 })
 export class EmpTableComponent implements OnInit {
   displayedColumns: string[] = [
-    'id',
+    'S.No.',
     'firstName',
     'lastName',
-    // 'email',
+    'email',
     'joiningDate',
     'gender',
     'education',
@@ -26,8 +27,8 @@ export class EmpTableComponent implements OnInit {
     'package',
     'action',
   ];
-  dataSource!: MatTableDataSource<any>;
-
+  dataSource!: MatTableDataSource<EmpDetails>;
+  isLoading: boolean = false;
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 
@@ -38,6 +39,7 @@ export class EmpTableComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    console.log(this.dataSource)
     this.getEmployeeList();
   }
 
@@ -58,7 +60,8 @@ export class EmpTableComponent implements OnInit {
   // get employee list
   getEmployeeList() {
     this._empService.getEmployeeList().subscribe({
-      next: (data: any) => {
+      next: (data: EmpDetails[]) => {
+        console.log(data)
         this.dataSource = new MatTableDataSource(data);
         this.dataSource.sort = this.sort;
         this.dataSource.paginator = this.paginator;
