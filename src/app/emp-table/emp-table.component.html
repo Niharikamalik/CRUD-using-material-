@@ -1,88 +1,94 @@
-<mat-toolbar color="primary">
-  <span>Crud Application (Employee Management)</span>
-  <button mat-raised-button (click)="openForm()"> ADD EMPLOYEE</button>
-</mat-toolbar>
+<div style="width: 100%;">
+  <mat-toolbar color="primary">
+    <span>Crud Application</span>
+    <button (click)="openForm()" mat-raised-button matTooltip="add new employee detials" matTooltipPosition="left"> ADD EMPLOYEE </button>
+  </mat-toolbar>
+</div>
 <div class="emp-table">
   <mat-form-field>
     <mat-label>Filter</mat-label>
-    <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Mia" #input>
+    <input #input (keyup)="applyFilter($event)" matInput placeholder="Ex. Mia">
   </mat-form-field>
-
   <div class="table-container">
-
-    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" matSort>
-
-      <!--- Note that these columns can be defined in any order.
-          The actual rendered columns are set as a property on the row definition" -->
-
-      <!-- id Column -->
-      <ng-container matColumnDef="id">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header>ID </th>
-        <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+    <table [dataSource]="dataSource" mat-table class="mat-elevation-z8" matSort>
+      <!-- S.No. Column -->
+      <ng-container matColumnDef="S.No.">
+        <th *matHeaderCellDef mat-header-cell mat-sort-header> S.No. </th>
+        <td *matCellDef="let element let i = index;" mat-cell> {{i+1}} </td>
       </ng-container>
 
       <!-- firstName Column -->
       <ng-container matColumnDef="firstName">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header> First Name </th>
-        <td mat-cell *matCellDef="let element"> {{element.firstName | uppercase}} </td>
+        <th *matHeaderCellDef mat-header-cell mat-sort-header> First Name </th>
+        <td *matCellDef="let element" mat-cell> {{element.firstName.charAt(0).toUpperCase()+element.firstName.slice(1)}}
+        </td>
       </ng-container>
 
       <!-- lastName Column -->
       <ng-container matColumnDef="lastName">
-        <th mat-header-cell *matHeaderCellDef> LastName </th>
-        <td mat-cell *matCellDef="let element"> {{element.lastName | uppercase}} </td>
-      </ng-container>
-
-      <!-- email
-    <ng-container matColumnDef="email">
-      <th mat-header-cell *matHeaderCellDef> Email </th>
-      <td mat-cell *matCellDef="let element"> {{element.email}} </td>
-    </ng-container> -->
-
-      <!-- gender -->
-      <ng-container matColumnDef="gender">
-        <th mat-header-cell *matHeaderCellDef> Gender </th>
-        <td mat-cell *matCellDef="let element"> {{ element.gender== 'male'? 'M' : 'F'}} </td>
-      </ng-container>
-
-      <!-- education -->
-      <ng-container matColumnDef="education">
-        <th mat-header-cell *matHeaderCellDef> education </th>
-        <td mat-cell *matCellDef="let element"> {{element.education}} </td>
-      </ng-container>
-
-      <ng-container matColumnDef="joiningDate">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header> joiningDate </th>
-        <td mat-cell *matCellDef="let element"> {{element.joiningDate | date}} </td>
-      </ng-container>
-
-      <ng-container matColumnDef="experience">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header> Experiemce </th>
-        <td mat-cell *matCellDef="let element"> {{element.experience}} </td>
-      </ng-container>
-
-      <ng-container matColumnDef="technology">
-        <th mat-header-cell *matHeaderCellDef> technology </th>
-        <td mat-cell *matCellDef="let element"> {{element.technology}} </td>
-      </ng-container>
-
-      <ng-container matColumnDef="package">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header> Package </th>
-        <td mat-cell *matCellDef="let element"> {{element.package | currency :'INR'}} L</td>
-      </ng-container>
-
-      <ng-container matColumnDef="action">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header> Action </th>
-        <td mat-cell *matCellDef="let element">
-          <button mat-icon-button color="primary" (click)="openEditForm(element)"> <mat-icon
-              class="mat-18">edit</mat-icon></button>
-          <button mat-icon-button color="warn" (click)="deleteEmploye(element.id)"> <mat-icon
-              class="mat-18">delete</mat-icon></button>
+        <th *matHeaderCellDef mat-header-cell> LastName </th>
+        <td *matCellDef="let element" mat-cell> {{element.lastName.charAt(0).toUpperCase()+element.lastName.slice(1)}}
         </td>
       </ng-container>
 
-      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      <!-- email column -->
+      <ng-container matColumnDef="email">
+        <th *matHeaderCellDef mat-header-cell> Email </th>
+        <td *matCellDef="let element" mat-cell> {{element.email}} </td>
+      </ng-container>
+
+      <!-- gender column -->
+      <ng-container matColumnDef="gender">
+        <th *matHeaderCellDef mat-header-cell> Gender </th>
+        <td *matCellDef="let element" mat-cell> {{ element.gender== 'male'? 'M' : element.gender== 'female'?'F':''}}
+        </td>
+      </ng-container>
+
+      <!-- education column -->
+      <ng-container matColumnDef="education">
+        <th *matHeaderCellDef mat-header-cell> education </th>
+        <td *matCellDef="let element" mat-cell> {{element.education}} </td>
+      </ng-container>
+
+      <!-- Joining Date column -->
+      <ng-container matColumnDef="joiningDate">
+        <th *matHeaderCellDef mat-header-cell mat-sort-header> joiningDate </th>
+        <td *matCellDef="let element" mat-cell> {{element.joiningDate | date}} </td>
+      </ng-container>
+
+      <!-- Experience column -->
+      <ng-container matColumnDef="experience">
+        <th *matHeaderCellDef mat-header-cell mat-sort-header> Experiemce </th>
+        <td *matCellDef="let element" mat-cell> {{element.experience}} </td>
+      </ng-container>
+
+      <!-- Technology column -->
+      <ng-container matColumnDef="technology">
+        <th *matHeaderCellDef mat-header-cell> technology </th>
+        <td *matCellDef="let element" mat-cell> {{element.technology}} </td>
+      </ng-container>
+
+      <!-- Package column -->
+      <ng-container matColumnDef="package">
+        <th *matHeaderCellDef mat-header-cell mat-sort-header> Package </th>
+        <td *matCellDef="let element" mat-cell> {{element.package? (element.package | currency :'INR')+ 'L':''}} </td>
+      </ng-container>
+
+      <!-- Action column -->
+      <ng-container matColumnDef="action">
+        <th *matHeaderCellDef mat-header-cell mat-sort-header> Action </th>
+        <td *matCellDef="let element" mat-cell>
+          <button (click)="openEditForm(element)" mat-icon-button color="primary"> <mat-icon
+              class="mat-18">edit</mat-icon> </button>
+          <button (click)="deleteEmploye(element.id)" mat-icon-button color="warn"> <mat-icon
+              class="mat-18">delete</mat-icon> </button>
+        </td>
+      </ng-container>
+
+      <tbody>
+        <tr *matHeaderRowDef="displayedColumns" mat-header-row></tr>
+        <tr *matRowDef="let row; columns: displayedColumns;" mat-row></tr>
+      </tbody>
     </table>
     <mat-paginator [pageSizeOptions]="[5]" aria-label="Select page of users"></mat-paginator>
   </div>

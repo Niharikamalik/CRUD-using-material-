@@ -1,14 +1,14 @@
 {
   "posts": [
     {
-      "id": 1,
+      "id": "1",
       "title": "json-server",
       "author": "typicode"
     }
   ],
   "comments": [
     {
-      "id": 1,
+      "id": "1",
       "body": "some comment",
       "postId": 1
     }
@@ -27,7 +27,7 @@
       "technology": "machine-learning",
       "experience": 0,
       "package": 3.2,
-      "id": 1
+      "id": "1"
     },
     {
       "firstName": "test2 ",
@@ -39,7 +39,7 @@
       "technology": "data-analysis",
       "experience": 2,
       "package": 5.4,
-      "id": 2
+      "id": "2"
     },
     {
       "firstName": "test3 ",
@@ -51,7 +51,7 @@
       "technology": "android",
       "experience": 0,
       "package": 4.2,
-      "id": 3
+      "id": "3"
     },
     {
       "firstName": "test4 ",
@@ -63,7 +63,7 @@
       "technology": "data-analysis",
       "experience": 1,
       "package": 10,
-      "id": 4
+      "id": "4"
     },
     {
       "firstName": "test5 ",
@@ -75,7 +75,7 @@
       "technology": "web-development",
       "experience": 3,
       "package": 8,
-      "id": 5
+      "id": "5"
     },
     {
       "firstName": "test6 ",
@@ -87,7 +87,7 @@
       "technology": "other",
       "experience": 2,
       "package": 20,
-      "id": 6
+      "id": "6"
     }
   ]
 }

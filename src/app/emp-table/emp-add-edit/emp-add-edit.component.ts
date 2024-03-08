@@ -5,6 +5,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { EmployeeService } from 'src/app/services/employee.service';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { CoreService } from 'src/app/core/core.service';
+import { EmpDetails } from 'src/app/interface/empdetails';
 
 @Component({
   selector: 'app-emp-add-edit',
@@ -20,7 +21,7 @@ export class EmpAddEditComponent implements OnInit {
     private _empService: EmployeeService,
     private _dialogRef: MatDialogRef<EmpAddEditComponent>,
     private _coreService : CoreService,
-    @Inject(MAT_DIALOG_DATA) public data: any
+    @Inject(MAT_DIALOG_DATA) public data: any,
   ) {
     this.empForm = this._fb.group({
       firstName: '',

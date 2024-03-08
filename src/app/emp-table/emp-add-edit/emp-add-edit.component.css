@@ -6,10 +6,9 @@
 {
   display: flex;
   gap : 10px;
-
-  mat-from-field{
-    width: 100%;
-  }
+}
+.row > mat-from-field {
+  width: 100%;
 }
 .emp-form-btn
 {
@@ -25,7 +24,7 @@ mat-radio-group
 {
   margin-top:  20px;
   margin-bottom: 20px;
-  mat-radio-button{
-    margin-left : 10px;
-  }
+}
+mat-radio-group>mat-radio-button{
+  margin-left : 10px;
 }

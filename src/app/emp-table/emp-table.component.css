@@ -1,4 +1,6 @@
-
+mat-table{
+  width: 100%;
+}
 td,th{
   width: fit-content;
 }
@@ -11,7 +13,17 @@ td,th{
   max-width: 1248px;
   margin: 0 auto;
   padding-top: 20px;
-  mat-form-field{
-    width: 100%;
-  }
 }
+ table[mat-table],.emp-table > mat-form-field {
+   width: 100%;
+ }
+mat-toolbar {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+mat-paginator
+{
+  width: 100%;
+}
+
