@@ -31,6 +31,7 @@ export class EmpTableComponent implements OnInit {
   isLoading: boolean = false;
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
+  products: EmpDetails[];
 
   constructor(
     private _dialog: MatDialog,
@@ -39,7 +40,7 @@ export class EmpTableComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    console.log(this.dataSource)
+    console.log(this.dataSource);
     this.getEmployeeList();
   }
 
@@ -61,7 +62,7 @@ export class EmpTableComponent implements OnInit {
   getEmployeeList() {
     this._empService.getEmployeeList().subscribe({
       next: (data: EmpDetails[]) => {
-        console.log(data)
+        // console.log(data);
         this.dataSource = new MatTableDataSource(data);
         this.dataSource.sort = this.sort;
         this.dataSource.paginator = this.paginator;
@@ -104,4 +105,25 @@ export class EmpTableComponent implements OnInit {
         this.getEmployeeList();
       });
   }
+
+  // filter BY Name
+
+  filterName(val: any) {
+    val = val.target.value;
+    console.log(val)
+    if (val == '') {
+      this.getEmployeeList();
+      console.log('all records');
+    } else {
+      this._empService.getfilter(val).subscribe({
+        next: (data: EmpDetails[]) => {
+            this.dataSource = new MatTableDataSource(data);
+            this.dataSource.sort = this.sort;
+            this.dataSource.paginator = this.paginator;
+        },
+        error: console.log,
+      });
+    }
+  }
 }
+
